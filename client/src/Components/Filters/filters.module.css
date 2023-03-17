@@ -1,0 +1,34 @@
+.containerFilter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:  auto;
+    height: auto;
+    background-color: white;
+    border-radius: 10px;
+    padding: 25px;
+    border-color: black;
+    border-width: 1.5px;
+    border-style: solid;
+    margin-left: 40px;
+    margin-top:20px;
+    position: fixed;
+  }
+
+  .containerFilter:hover {
+    box-shadow: -2px 0px 45px -1px rgba(0, 0, 0, 0.63);
+  }
+
+  .clear {
+    width:  auto;
+    align-items: center;
+    text-decoration: underline;
+    margin-bottom: 10px;
+    cursor: pointer;
+    margin-top: 0px;
+  }
+  
+  .clearfilter {
+    width:  auto;
+    margin-top: px;
+  }

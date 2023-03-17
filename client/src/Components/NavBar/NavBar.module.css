@@ -1,0 +1,43 @@
+.mainContainer {
+  display: flex;
+  flex-direction: row;
+    background-image: url("../../images/bgnav11.png");
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    padding: 1em 10em 1em 10em;
+    width: 100vw;
+    animation: bganimado 20s infinite;
+    box-shadow: -3px 22px 38px -19px rgba(0,0,0,1);
+  }
+  @keyframes bganimado{
+    0%{
+      background-position: 0% 50%;
+    }
+    50%{
+      background-position: 100%;
+    }
+    100%{
+      background-position: 0% 50%;
+    }
+  }
+
+  .pikachu{
+    height: 3.5em;
+  }
+
+  .container{
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+  }
+
+  .link, .form{
+    color: white;
+    font-size: 1.3em;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  
+ 
