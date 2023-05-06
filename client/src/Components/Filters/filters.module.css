@@ -3,16 +3,15 @@
     flex-direction: column;
     align-items: center;
     width:  auto;
-    height: auto;
+    height: 20em;
     background-color: white;
     border-radius: 10px;
     padding: 25px;
     border-color: black;
     border-width: 1.5px;
     border-style: solid;
-    margin-left: 40px;
+    margin-left: 20px;
     margin-top:20px;
-    position: fixed;
   }
 
   .containerFilter:hover {

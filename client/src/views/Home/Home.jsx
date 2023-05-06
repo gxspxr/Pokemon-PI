@@ -8,6 +8,8 @@ import PokemonCard from "../../Components/Cards/Cards";
 import Paginado from "../../Components/Paginado/Paginado";
 import SearchBar from "../../Components/SearchBar/SearchBar";
 import LoadingGif from "../../images/load.gif"
+import { BsLinkedin } from "react-icons/bs";
+import {BsGithub} from "react-icons/bs"
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -27,6 +29,7 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(getAllPokemon());
+    console.log("useEffect del home**********")
   }, [dispatch]);
 
   return (
@@ -61,6 +64,10 @@ export default function Home() {
       </main>
       <footer className={styles.footer}>
         <Paginado page={page} setPage={setPage} max={max} />
+      </footer>
+      <footer className={styles.footer2}>
+      <h3>All rights reserved © 2023 </h3>
+      <p className={styles.yo} > <a className={styles.linked} href="https://github.com/gxspxr"><BsGithub/></a> <a className={styles.linked} href="https://www.linkedin.com/in/gaspar-serna-8a0945215/"><BsLinkedin/></a> Gaspar Serna</p>
       </footer>
     </div>
   );

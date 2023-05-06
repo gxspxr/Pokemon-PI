@@ -1,48 +1,31 @@
 const axios= require('axios');
 const {Pokemon, Type}=require("../db")
 
-const UrlIndex = async (url) => {
-  const urlResponse = await axios.get(url);
-  return urlResponse.data;
-};
 
 const getAllPokemons = async () => {
   try {
-    const apiData = await UrlIndex("https://pokeapi.co/api/v2/pokemon?limit=150");
-    const apiPokemons = await apiData.results.map((pokemon) => {
-      const obj = {
-        name: pokemon?.name,
-        url: pokemon.url,
+    const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=21');
+    const pokemons = response.data.results;
+    const pokemonData = await Promise.all(pokemons.map(async (pokemon) => {
+      const res = await axios.get(pokemon.url);
+      return {
+        pokemonId:res.data.id,
+        name: res.data.name,
+        hp: res.data.stats[0].base_stat,
+        speed: res.data.stats[5].base_stat,
+        attack: res.data.stats[1].base_stat,
+        defense: res.data.stats[2].base_stat,
+        type: res.data.types.map(e=> e.type.name).join(", "),
+        weight: res.data.weight,
+        height: res.data.height,
+        image: res.data.sprites.other["official-artwork"]["front_default"],
       };
-      return obj;
-    });
-    const pokemonHandler = async () => {
-      const pokemon = apiPokemons?.map(async (res) => {
-        const urlInfo = await UrlIndex(res.url);
-        const pokemonData = {
-          pokemonId:urlInfo.id,
-          name: urlInfo.name,
-          hp: urlInfo.stats[0].base_stat,
-          speed: urlInfo.stats[5].base_stat,
-          attack: urlInfo.stats[1].base_stat,
-          defense: urlInfo.stats[2].base_stat,
-          weight: urlInfo.weight,
-          height: urlInfo.height,
-          image:  urlInfo.sprites.other['official-artwork'].front_default,
-          type: urlInfo.types.map((t) => t.type.name).join("/"),
-        };
-        return pokemonData;
-      });
-      const pokemonData = await Promise.all(pokemon);
-      return pokemonData;
-    };
-    const data = await pokemonHandler();
-
-    return data
+    }));
+    return pokemonData;
   } catch (error) {
-    console.error(error);
+    console.log(error);
   }
-};
+}
 
 
   const getPokemonByID = async (pokemonId) => {

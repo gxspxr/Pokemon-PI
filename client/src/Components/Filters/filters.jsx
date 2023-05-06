@@ -80,7 +80,7 @@ export default function Filters() {
   <option value="min">Min Damage</option>
 </select>
 
-      <div style={{fontSize:"15px", display:"flex", flexDirection:"row", paddingTop:"5px"}}>Filtrar por tipos</div>
+      <div style={{fontSize:"15px", paddingTop:"5px"}}>Filtrar por tipos</div>
       <select onChange={handleFilter} value={selectedOption}>
         <option value="todos">Todos</option>
         {state.types.map((type, index) => (

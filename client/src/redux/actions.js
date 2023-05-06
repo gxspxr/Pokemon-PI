@@ -4,7 +4,7 @@ export const GET_POKEMONS = "GET_POKEMONS";
 export const getAllPokemon = () => {
   return async function (dispatch) {
     const apiData = await axios.get("http://localhost:3001/pokemons");
-    const pokemons =  apiData.data.map((pokemon) => {
+    const pokemons =  apiData.data?.map((pokemon) => {
       return {
         id: pokemon.pokemonId,
         name: pokemon.name,
@@ -85,5 +85,12 @@ export const orderDamage=(damage)=>{
   return{
     type:DAMAGE,
     payload:damage
+  }
+}
+
+export const CLEAR_POKEMON="CLEAR_POKEMON"
+export const clearPokemon=()=>{
+  return{
+    type:CLEAR_POKEMON
   }
 }

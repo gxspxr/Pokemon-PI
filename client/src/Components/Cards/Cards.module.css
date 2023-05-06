@@ -23,9 +23,6 @@
   width: 70%;
 }
 
-
-
-
 .name{
   display: flex;
   justify-content: center;
@@ -56,5 +53,4 @@
   flex: 1;
   padding-bottom: 5%;
   margin-top: -10px;
-
 }

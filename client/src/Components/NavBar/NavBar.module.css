@@ -29,14 +29,23 @@
   .container{
   display: flex;
   flex-direction: row;
-  gap: 2em;
+  gap: 3em;
   }
+  
 
   .link, .form{
     color: white;
     font-size: 1.3em;
     font-weight: bold;
     text-decoration: none;
+  }
+
+  .link:hover{
+    color: black;
+  }
+
+  .form:hover{
+    color: black;
   }
 
   

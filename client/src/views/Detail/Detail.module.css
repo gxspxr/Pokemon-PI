@@ -48,7 +48,7 @@
     flex-direction: row;
     padding-left: 4em;
     padding-right: 3em;
-    column-gap: 5em;
+    column-gap: 3em;
 }
 .details h4 {
     width: 1em;

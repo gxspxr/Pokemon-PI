@@ -1,4 +1,4 @@
-import { GET_POKEMONS, GET_TYPES, FILTER_BY_TYPE, GET_POKEMON, FILTER_NAME, DAMAGE, ORDER } from "./actions";
+import { GET_POKEMONS, GET_TYPES, FILTER_BY_TYPE, GET_POKEMON, FILTER_NAME, DAMAGE, ORDER, CLEAR_POKEMON } from "./actions";
 
 const initialState = {
   pokemons: [],
@@ -29,6 +29,10 @@ function rootReducer(state = initialState, action) {
       return {
         ...state, pokemon:{...state.pokemon, ...action.payload}
       };
+      case "CLOSE_CARD":
+        return {
+          ...state, pokemon:{...state.pokemon, ...action.payload}
+        };
       case FILTER_NAME:
       return {
         ...state,
@@ -60,6 +64,10 @@ function rootReducer(state = initialState, action) {
         ...state,
         pokemons: orderDamage,
       };
+      case CLEAR_POKEMON:
+        return {
+          ...state, pokemon:{}
+        }
 
     default:
       return { ...state };

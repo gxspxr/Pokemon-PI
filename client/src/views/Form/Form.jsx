@@ -37,7 +37,7 @@ function PokemonForm() {
     height:"",
     weight: "",
     image: "",
-    type:[]
+    type:""
   }
 
   const [formValues, setFormValues] = useState(initialState);
@@ -125,9 +125,7 @@ function PokemonForm() {
     //types
     if (!values.type.length) {
       error.type = "Debes seleccionar al menos un tipo.";
-    } else if (values.type.length > 2) {
-      error.type = "Solo puedes seleccionar 2 tipos.";
-    }
+    } 
   //img
   if(!values.image.length){
     values.image=NoImage
@@ -148,33 +146,36 @@ function PokemonForm() {
     const valor = validaciones({ ...formValues, [name]: value });
     setError(valor);
   };
+
+  console.log(formValues)
   
  
   const handleTypeChange = (e) => {
-    var valor;
     const temporalType = e.target.value;
+    let valor;
+    
     if (e.target.checked) {
       // Agrega el tipo seleccionado
       setFormValues({
         ...formValues,
-        type: [...formValues.type, temporalType],
+        type: temporalType,
       });
       valor = validaciones({
         ...formValues,
-        type: [...formValues.type, temporalType],
+        type: temporalType,
       });
     } else {
       // Quita el tipo deseleccionado
-      let filtrar = formValues.type.filter((t) => t !== temporalType);
       setFormValues({
         ...formValues,
-        type: filtrar,
+        type: "",
       });
       valor = validaciones({
         ...formValues,
-        type: filtrar,
+        type: "",
       });
     }
+  
     setError(valor);
   };
 
@@ -248,7 +249,7 @@ function PokemonForm() {
         {PokemonTypes.map((type) => { 
           return (
             <label htmlFor={type} key={type}>
-              <input type="checkbox" name="type" value={type} onChange={handleTypeChange}/>
+              <input type="checkbox" name="type" checked={formValues.type === type} value={type} onChange={handleTypeChange}/>
               {type}
 
             </label>

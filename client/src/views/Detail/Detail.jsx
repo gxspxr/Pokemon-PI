@@ -1,16 +1,23 @@
 import React, { useEffect } from 'react'
 import styles from "./Detail.module.css"
 import  {useDispatch, useSelector}  from 'react-redux'
-import { getPokemon } from '../../redux/actions'
+import { getPokemon, clearPokemon } from '../../redux/actions'
 import { useParams } from 'react-router-dom'
 import noImage from '../../images/simple_pokeball.gif'
 import { Link } from 'react-router-dom'
+
 
 const Detail = () => {
   const dispatch= useDispatch()
   const pokemon=useSelector(state=>state.pokemon)
   const {id}=useParams()
   const infoPokemon=pokemon
+
+
+const onClose=()=>{
+  dispatch(clearPokemon())
+}
+
 
 
   useEffect(()=>{
@@ -41,7 +48,7 @@ const Detail = () => {
         </div>
       </div>
       <Link to="/home">
-        <button className={styles.button}>Close</button>
+        <button onClick={onClose} className={styles.button}>Close</button>
       </Link>
     </div>
   </div>
